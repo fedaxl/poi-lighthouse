@@ -1,0 +1,40 @@
+{
+  "name": "poi-web",
+  "version": "1.0.0",
+  "description": "Source project for Enterprise Web Development course:",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Federica Fiorenza",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/boom": "^9.1.1",
+    "@hapi/cookie": "^11.0.2",
+    "@hapi/hapi": "^20.1.0",
+    "@hapi/inert": "^6.0.3",
+    "@hapi/joi": "^17.1.1",
+    "@hapi/vision": "^6.0.1",
+    "axios": "^0.21.1",
+    "cloudinary": "^1.24.0",
+    "dotenv": "^8.2.0",
+    "fs": "^0.0.1-security",
+    "handlebars": "^4.7.7",
+    "mais-mongoose-seeder": "^1.0.7",
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.11.17",
+    "openweather-apis": "^4.4.1",
+    "util": "^0.12.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
+  },
+  "keywords": [
+    "poi"
+  ]
+}
