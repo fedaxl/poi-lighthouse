@@ -7,6 +7,8 @@ const Joi = require('@hapi/joi');
 const ImageStore = require('../utils/image-store');
 const Category = require('../models/categories');
 const poiUtil = require('../utils/poi-util');
+const apiKey = process.env.apiKey;
+const axios = require("axios");
 
 /*
 Controller for all Points of Interest. Allows a user
@@ -274,7 +276,6 @@ const Poi = {
   getWeather: {
     handler: async function (request, h) {
       try {
-        const userID = request.auth.credentials.id;
         const latitude = poi.latitude;
         const longitude = poi.longitude;
         const weatherRequest = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
@@ -292,7 +293,7 @@ const Poi = {
           humidity: weather.main.humidity,
         };
         console.log(report);
-        return h.view("poi", {
+        return h.view("/view-poi", {
           report: report,
         });
       } catch (err) {
