@@ -26,6 +26,8 @@ module.exports = [
   {method: 'GET', path: '/update-poi/{id}', config: Poi.showUpdatePoi},
   {method: 'POST', path: '/update-poi/{id}', config: Poi.updatePoi},
   {method: 'GET', path: '/view-poi/{id}', config: Poi.showSinglePoi},
+  // Routes for poi weather
+  { method: "GET", path: "/report", config: Poi.getWeather },
 
   // Routes for admin dashboard
   {method: 'GET',path: '/admin-dashboard', config: Admin.adminDashboard},

@@ -270,6 +270,37 @@ const Poi = {
       }
     }
   },
+
+  getWeather: {
+    handler: async function (request, h) {
+      try {
+        const userID = request.auth.credentials.id;
+        const latitude = poi.latitude;
+        const longitude = poi.longitude;
+        const weatherRequest = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        let weather = {};
+        const response = await axios.get(weatherRequest);
+        if (response.status == 200) {
+          weather = response.data;
+        }
+        const report = {
+          feelsLike: Math.round(weather.main.feels_like - 273.15),
+          clouds: weather.weather[0].description,
+          windSpeed: weather.wind.speed,
+          windDirection: weather.wind.deg,
+          visibility: weather.visibility / 1000,
+          humidity: weather.main.humidity,
+        };
+        console.log(report);
+        return h.view("poi", {
+          report: report,
+        });
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+
 };
 
 module.exports = Poi;
