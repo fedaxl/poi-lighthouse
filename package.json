@@ -19,13 +19,16 @@
     "axios": "^0.21.1",
     "cloudinary": "^1.24.0",
     "dotenv": "^8.2.0",
-    "fs": "^0.0.1-security",
+    "fs": "^0.0.2",
     "handlebars": "^4.7.7",
     "mais-mongoose-seeder": "^1.0.7",
     "mongodb": "^3.6.4",
-    "mongoose": "^5.11.17",
+    "mongoose": "^5.11.20",
     "openweather-apis": "^4.4.1",
     "util": "^0.12.3"
+  },
+  "engines": {
+    "node": "^12.16.1"
   },
   "devDependencies": {
     "prettier": "^2.2.1"
