@@ -272,10 +272,16 @@ const Poi = {
       }
     }
   },
-
-  getWeather: {
+  
+   /*
+  Controller to get weather information using api form openweathermap, using latitude and longitude from poi
+  here
+  */
+    getWeather: {
     handler: async function (request, h) {
       try {
+        const poi_id = request.params.id;
+        const poi = await PointOfInterest.findById(poi_id);
         const latitude = poi.latitude;
         const longitude = poi.longitude;
         const weatherRequest = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
@@ -299,9 +305,9 @@ const Poi = {
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
-    }
+    },
   },
-
+  
 };
 
 module.exports = Poi;
