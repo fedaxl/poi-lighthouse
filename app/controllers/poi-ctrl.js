@@ -7,6 +7,8 @@ const Joi = require('@hapi/joi');
 const ImageStore = require('../utils/image-store');
 const Category = require('../models/categories');
 const poiUtil = require('../utils/poi-util');
+const apiKey = process.env.apiKey;
+const axios = require("axios");
 
 /*
 Controller for all Points of Interest. Allows a user
@@ -270,6 +272,42 @@ const Poi = {
       }
     }
   },
+  
+   /*
+  Controller to get weather information using api form openweathermap, using latitude and longitude from poi
+  here
+  */
+    getWeather: {
+    handler: async function (request, h) {
+      try {
+        const poi_id = request.params.id;
+        const poi = await PointOfInterest.findById(poi_id);
+        const latitude = poi.latitude;
+        const longitude = poi.longitude;
+        const weatherRequest = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+        let weather = {};
+        const response = await axios.get(weatherRequest);
+        if (response.status == 200) {
+          weather = response.data;
+        }
+        const report = {
+          feelsLike: Math.round(weather.main.feels_like - 273.15),
+          clouds: weather.weather[0].description,
+          windSpeed: weather.wind.speed,
+          windDirection: weather.wind.deg,
+          visibility: weather.visibility / 1000,
+          humidity: weather.main.humidity,
+        };
+        console.log(report);
+        return h.view("/view-poi", {
+          report: report,
+        });
+      } catch (err) {
+        return h.view("main", { errors: [{ message: err.message }] });
+      }
+    },
+  },
+  
 };
 
 module.exports = Poi;
