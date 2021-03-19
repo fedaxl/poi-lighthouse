@@ -299,7 +299,7 @@ const Poi = {
       } catch (err) {
         return h.view("main", { errors: [{ message: err.message }] });
       }
-    },
+    }
   },
 
 };
