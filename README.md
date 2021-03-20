@@ -12,7 +12,7 @@ The admin user will be able to view all the other users accounts and manage all 
 Glitch: https://handsome-quasar-touch.glitch.me/
 Heroku: https://poi-web.herokuapp.com/
 
-### v.1.1
+### v.1.0.0
 Authentation/Cookies/Session (@hapi/cookie)<br />
 Images (Upload/View) (cloudinary)<br />
 SignUp/Login/Delete account <br />
