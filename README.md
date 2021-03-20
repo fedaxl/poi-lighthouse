@@ -10,7 +10,7 @@ The admin user will be able to view all the other users accounts and manage all 
 <br />
 
 Glitch: https://handsome-quasar-touch.glitch.me/
-Heroku: https://poi-lighthouse.herokuapp.com/
+Heroku: https://poi-web.herokuapp.com/
 
 ### v.1.1
 Authentation/Cookies/Session (@hapi/cookie)<br />
